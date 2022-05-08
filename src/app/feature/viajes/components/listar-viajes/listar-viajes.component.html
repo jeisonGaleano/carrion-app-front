@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card shadow my-5 text-center ">
+      <div class="card-header ">
+        <h1>{{titulo}}</h1>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-stripped  align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th *ngFor="let e of encabezadoTabla">{{e}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let viajesconductor of listaViajesConductor">
+                <td>{{viajesconductor.id}}</td>
+                <td>{{viajesconductor.toneladas}}</td>
+                <td>{{viajesconductor.fechaServicio}}</td>
+                <td>{{viajesconductor.origen}} </td>
+                <td>{{viajesconductor.destino}}</td>
+                <td>{{viajesconductor.tipoCasa | currency}}</td>
+                <td>{{viajesconductor.precios}}</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-success my-2" [routerLink]="['/reserva/crear']" id="linkCrearReserva">Agregar</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<nav *ngIf="obtenerRol()==2">
+  <a *ngFor="let item of clientes" [routerLink]="item.url" routerLinkActive="active">{{item.nombre}}</a>
+</nav>
+<nav *ngIf="obtenerRol()==3">
+  <a *ngFor="let item of conductores" [routerLink]="item.url" routerLinkActive="active">{{item.nombre}}</a>
+</nav>

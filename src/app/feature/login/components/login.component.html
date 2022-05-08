@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="card border-primary" style="margin-bottom: 5%; margin-top: 10%;" >
+        <div class="card-header" style="text-align: center; font-weight: bold;">
+            {{titulo}}
+        </div>
+        <div class="card-body" style="text-align: center;">
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="form-group">
+                    <input class="form-control mb-4" type="text" id="usuario" validar formControlName="usuario" name="usuario" placeholder="Usuario" autofocus>
+                </div><br>
+                <div class="form-group">
+                    <input class="form-control mb-4" type="password" id="clave" validar formControlName="clave" name="clave" placeholder="Contraseña">
+                </div><br>
+                <div class="form-group">
+                    <button class="form-control mb-4" type="submit" class="btn btn-primary" [disabled]="!loginForm.valid" role="button">Iniciar Sesión</button>
+                </div> <br>
+                <p>No tienes cuenta?
+                  <a href="registro-usuario">Registrarse</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="container col-sm-12 col-md-10">
+  <div class="card-header" style="text-align: center; font-weight: bold;">
+    {{titulo}}
+</div>
+<form [formGroup]="viajesForm" (ngSubmit)="crear()">
+  <div class="row">
+      <div class="form-group col-md-6">
+        <label for="inputConductor">Conductor</label>
+        <select id="inputConductor" class="form-control" formControlName="idConductor" *ngFor="let conductores of conductorLista">
+          <option value="{{conductores.id}}">{{conductores.nombre}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputToneladas">Toneladas</label>
+        <input type="number" class="form-control" id="inputPlaca" placeholder="Toneladas" formControlName="toneladas">
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="inputTipoVehiculo">Tipo Vehiculo</label>
+          <select id="inputTipoVehiculo" class="form-control"  formControlName="tipoVehiculo">
+            <option value=1>Carroceria</option>
+            <option value=2>Planchon</option>
+            <option value=3>Grua</option>
+            <option value=4>Furgon</option>
+          </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputOrigen">Origen</label>
+        <input type="text" class="form-control" id="inputOrigen" placeholder="Origen" formControlName="origen">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputDestino">Destino</label>
+        <input type="text" class="form-control" id="inputDestino" placeholder="Destino" formControlName="destino">
+      </div>
+        <div class="form-group col-md-6">
+          <label for="inputFechaServicio">Fecha Servicio</label>
+          <input type="date"
+                 placeholder="Fecha Servicio"
+                 class="form-control"
+                 bsDatepicker
+                 formControlName="fechaServicio">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputValorOferta">Valor Oferta</label>
+          <input type="number" class="form-control" id="inputValorOferta" placeholder="Valor Oferta" formControlName="precio">
+        </div>
+        <div class="form-group col-md-12">
+          <label for="inputCasa">Tipo Casa</label>
+            <select id="inputCasa" class="form-control" formControlName="tipoCasa">
+              <option selected>Tipo Casa...</option>
+              <option>Apartamento</option>
+              <option>Casa</option>
+              <option>Condominio</option>
+            </select>
+        </div>
+    </div>
+    <br>
+    <div style="text-align: center;">
+      <button type="submit" class="btn btn-primary">Registrarse</button>
+    </div>
+  </form>
+</div>
