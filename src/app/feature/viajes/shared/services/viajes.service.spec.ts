@@ -47,7 +47,7 @@ describe('ViajesService', () => {
       }
     ];
 
-    service.consultar(1).subscribe(viaje => {
+    service.consultar('1').subscribe(viaje => {
       expect(viaje.length).toBe(1);
       expect(viaje).toEqual(listaReservas);
     });

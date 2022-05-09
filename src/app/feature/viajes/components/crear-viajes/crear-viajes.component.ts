@@ -24,6 +24,7 @@ export class CrearViajesComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerConductores();
     this.construirFormularioViajes();
+    this.crearEntidad();
   }
 
 

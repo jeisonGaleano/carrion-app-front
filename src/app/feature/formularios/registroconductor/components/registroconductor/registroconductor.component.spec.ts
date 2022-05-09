@@ -1,6 +1,6 @@
+import { RegistroconductorComponent } from './registroconductor.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegistroconductorComponent } from './registroconductor.component';
 
 describe('RegistroconductorComponent', () => {
   let component: RegistroconductorComponent;

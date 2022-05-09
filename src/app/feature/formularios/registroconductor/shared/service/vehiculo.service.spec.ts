@@ -26,7 +26,7 @@ describe('VehiculoService', () => {
       2022,
       'Nissan');
     service.guardar(listaVehiculo).subscribe(vehiculo => {
-      expect(vehiculo).toEqual(1);
+      expect(vehiculo).toEqual(true);
     });
     const req = httpMock.expectOne(apiEndpointVehiculo);
     expect(req.request.method).toBe('POST');

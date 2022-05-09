@@ -17,25 +17,8 @@ describe('CrearViajesComponent', () => {
   let component: CrearViajesComponent;
   let fixture: ComponentFixture<CrearViajesComponent>;
   let router: Router;
-  let viajeService: ViajesService;
   let usuarioService: UsuariosService;
 
-  let viajes: Viaje[] = [
-    {
-      id: 1,
-      idUsuario: 1,
-      idConductor: 1,
-      toneladas: 12,
-      tipoVehiculo: 1,
-      fechaCreacion: '2022-05-09',
-      fechaServicio: '2022-05-10',
-      origen: 'Cali',
-      destino: 'Bogota',
-      terminado: false,
-      tipoCasa: 'Apartamento',
-      precios:120000
-    }
-  ];
 
   let usuarios: Usuarios[] = [
     {
@@ -65,7 +48,6 @@ describe('CrearViajesComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CrearViajesComponent);
     component = fixture.componentInstance;
-    viajeService=TestBed.inject(ViajesService);
     usuarioService=TestBed.inject(UsuariosService);
 
     router = TestBed.inject(Router);
@@ -78,7 +60,7 @@ describe('CrearViajesComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('deberia listar las canchas por Tipo de cancha', () => {
+  it('deberia listar los conductores', () => {
     component.obtenerConductores();
     expect(usuarioService.obtenerConductores).toHaveBeenCalled();
     expect(1).toBeGreaterThanOrEqual(component.conductorLista.length);
@@ -90,6 +72,8 @@ describe('CrearViajesComponent', () => {
     const viaje: Viaje = new Viaje(1,1,1,10,2,'2022-05-09',
     '2022-05-10','Barranquilla','Soledad',false,'Casa',120000);
 
+
+    component.viajesForm.controls.id.setValue(1);
     component.viajesForm.controls.idUsuario.setValue(1);
     component.viajesForm.controls.idConductor.setValue(1);
     component.viajesForm.controls.toneladas.setValue(12);

@@ -20,14 +20,13 @@ describe('LoginService', () => {
   });
 
   it('deberia consultar login', () => {
-    const listaLogin: Usuario[] = [
-      {
+    const listaLogin: Usuario  =
+    {
         id: 1,
         idRol: 1,
         usuario: 'json',
         clave: 'json1'
-      }
-    ];
+      };
 
     service.loginUsuario('json','json1').subscribe(login => {
       expect(login).toEqual(listaLogin);
