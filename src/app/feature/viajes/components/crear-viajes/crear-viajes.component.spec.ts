@@ -1,5 +1,3 @@
-import { Usuarios } from './../../../formularios/registrousuario/shared/model/usuarios';
-import { UsuariosService } from './../../../formularios/registrousuario/shared/service/usuarios.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpService } from './../../../../core/services/http.service';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -17,24 +15,7 @@ describe('CrearViajesComponent', () => {
   let component: CrearViajesComponent;
   let fixture: ComponentFixture<CrearViajesComponent>;
   let router: Router;
-  let usuarioService: UsuariosService;
 
-
-  let usuarios: Usuarios[] = [
-    {
-      id:  1,
-      identificacion: 1143151677,
-      nombre: 'JsonGB',
-      apellido: 'Galeano',
-      usuario: 'Jsongb',
-      clave: 'Json123',
-      edad: 22,
-      tipoRol: 1,
-      ciudadResidencia: 'Barranquilla',
-      correoElectronico: 'Jgabolano@gmail.com',
-      fechaCreacion: '2022-05-09'
-    }
-  ];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -48,7 +29,6 @@ describe('CrearViajesComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CrearViajesComponent);
     component = fixture.componentInstance;
-    usuarioService=TestBed.inject(UsuariosService);
 
     router = TestBed.inject(Router);
     spyOn(router, 'navigate');
@@ -60,34 +40,23 @@ describe('CrearViajesComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('deberia listar los conductores', () => {
-    component.obtenerConductores();
-    expect(usuarioService.obtenerConductores).toHaveBeenCalled();
-    expect(1).toBeGreaterThanOrEqual(component.conductorLista.length);
-    expect(component.conductorLista).toEqual(usuarios);
-  });
 
   it('deberia crear el objeto Viaje', () => {
 
-    const viaje: Viaje = new Viaje(1,1,1,10,2,'2022-05-09',
+    const viaje: Viaje = new Viaje(1,1,10,2,'2022-05-09',
     '2022-05-10','Barranquilla','Soledad',false,'Casa',120000);
-
-
-    component.viajesForm.controls.id.setValue(1);
     component.viajesForm.controls.idUsuario.setValue(1);
     component.viajesForm.controls.idConductor.setValue(1);
-    component.viajesForm.controls.toneladas.setValue(12);
-    component.viajesForm.controls.tipoVehiculo.setValue(1);
-    component.viajesForm.controls.fechaServicio.setValue('2022-05-11');
-    component.viajesForm.controls.fechaServicio.setValue('2022-05-12');
+    component.viajesForm.controls.toneladas.setValue(10);
+    component.viajesForm.controls.tipoVehiculo.setValue(2);
+    component.viajesForm.controls.fechaServicio.setValue('2022-05-09');
+    component.viajesForm.controls.fechaServicio.setValue('2022-05-10');
     component.viajesForm.controls.origen.setValue('Barranquilla');
-    component.viajesForm.controls.destino.setValue('Cali');
-    component.viajesForm.controls.terminado.setValue(true);
+    component.viajesForm.controls.destino.setValue('Soledad');
+    component.viajesForm.controls.terminado.setValue(false);
     component.viajesForm.controls.tipoCasa.setValue('Casa');
-    component.viajesForm.controls.precios.setValue(100000);
-
+    component.viajesForm.controls.precios.setValue(120000);
     const result = component['crearEntidad']();
-
     expect(viaje).toEqual(result);
   });
 });

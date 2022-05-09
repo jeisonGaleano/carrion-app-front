@@ -11,9 +11,9 @@ export class Usuarios{
     correoElectronico: string;
     fechaCreacion: string;
 
-    constructor(id: number,identificacion: number,nombre: string,apellido: string,
+    constructor(identificacion: number,nombre: string,apellido: string,
       usuario: string,clave: string,edad: number,tipoRol: number,ciudadResidencia: string,
-      correoElectronico: string,fechaCreacion: string){
+      correoElectronico: string,fechaCreacion?: string, id?: number){
         this.id=id;
         this.identificacion=identificacion;
         this.nombre=nombre;

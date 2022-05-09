@@ -2,6 +2,7 @@ import { VehiculoService } from './../../shared/service/vehiculo.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/feature/login/shared/service/service/login.service';
+import { Vehiculo } from '../../shared/model/vehiculo';
 
 @Component({
   selector: 'app-registroconductor',
@@ -16,6 +17,7 @@ export class RegistroconductorComponent implements OnInit {
 
   ngOnInit(): void {
     this.construirFormularioRegistrouUsuarios();
+    this.crearEntidad();
   }
 
   crear() {
@@ -37,6 +39,18 @@ export class RegistroconductorComponent implements OnInit {
     modelo: new FormControl('', [Validators.required]),
     marca: new FormControl('', [Validators.required])
     });
+  }
+
+  private crearEntidad(): Vehiculo {
+    const idConductor: number = this.registroVehiculoForm.value['identificacion'];
+    const placa: string = this.registroVehiculoForm.value['placa'];
+    const numeroMotor: string = this.registroVehiculoForm.value['numeroMotor'];
+    const numeroChasis: string = this.registroVehiculoForm.value['numeroChasis'];
+    const toneladas: number = this.registroVehiculoForm.value['toneladas'];
+    const tipoVehiculo: number = this.registroVehiculoForm.value['tipoVehiculo'];
+    const modelo: number = this.registroVehiculoForm.value['modelo'];
+    const marca: string = this.registroVehiculoForm.value['marca'];
+    return new Vehiculo(idConductor,placa,numeroMotor,numeroChasis,toneladas,tipoVehiculo,modelo,marca);
   }
 
 }

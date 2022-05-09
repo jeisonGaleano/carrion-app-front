@@ -54,12 +54,12 @@ export class CrearViajesComponent implements OnInit {
       destino: new FormControl('', [Validators.required]),
       terminado: new FormControl('', [Validators.required]),
       tipoCasa: new FormControl('', []),
-      precios: new FormControl('', [Validators.required])
+      precios: new FormControl('', [Validators.required]),
+      id: new FormControl('', [])
     });
   }
 
   private crearEntidad(): Viaje {
-    const id: number = this.viajesForm.value['id'];
     const idUsuario: number = this.viajesForm.value['idUsuario'];
     const idConductor: number = this.viajesForm.value['idConductor'];
     const toneladas: number = this.viajesForm.value['toneladas'];
@@ -71,8 +71,7 @@ export class CrearViajesComponent implements OnInit {
     const terminado: boolean = this.viajesForm.value['terminado'];
     const tipoCasa: string = this.viajesForm.value['tipoCasa'];
     const precios: number = this.viajesForm.value['precios'];
-
-    return new Viaje(id,idUsuario,idConductor,toneladas,tipoVehiculo,fechaCreacion,fechaServicio,origen, destino
+    return new Viaje(idUsuario,idConductor,toneladas,tipoVehiculo,fechaCreacion,fechaServicio,origen, destino
       ,terminado,tipoCasa,precios);
   }
 }

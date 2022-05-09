@@ -1,14 +1,30 @@
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpService } from '@core/services/http.service';
 
 import { HomeComponent } from './home.component';
+import { Trm } from './shared/Model/trm';
+import { HomeService } from './shared/Service/home.service';
+import { of } from 'rxjs';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
+  let trmService: HomeService;
+  let trm: Trm = new Trm('1234','COP','2022-05-04T00:00:00-05:00', '2022-05-04T00:00:00-05:00', '4016.34', 'true');
+
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      declarations: [ HomeComponent ],
+      imports: [
+        CommonModule,
+        HttpClientModule,
+        RouterTestingModule,
+      ],
+      providers: [HomeService, HttpService],
     })
     .compileComponents();
   }));
@@ -16,6 +32,8 @@ describe('HomeComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
+    trmService = TestBed.inject(HomeService);
+    spyOn(trmService, 'consultar').and.returnValue(of(trm));
     fixture.detectChanges();
   });
 

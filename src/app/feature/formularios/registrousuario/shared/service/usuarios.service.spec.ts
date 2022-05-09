@@ -1,6 +1,7 @@
+import { HttpService } from './../../../../../core/services/http.service';
 import { Usuarios } from './../model/usuarios';
 import { environment } from './../../../../../../environments/environment';
-import { HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { UsuariosService } from './usuarios.service';
@@ -10,14 +11,19 @@ describe('UsuariosService', () => {
   let service: UsuariosService;
   let httpMock: HttpTestingController;
   const apiEndpointUsuarios = `${environment.endpoint}/usuarios-carrion`;
+
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    const injector = TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [UsuariosService, HttpService]
+    });
+    httpMock = injector.inject(HttpTestingController);
     service = TestBed.inject(UsuariosService);
   });
 
 
   it('deberia guardar usuarios', () => {
-    let listaUsuario = new Usuarios(1,
+    let listaUsuario = new Usuarios(
       1143171016,
       'test',
       'test',

@@ -11,9 +11,9 @@ export class Viaje {
   terminado: boolean;
   tipoCasa: string;
   precios: number;
-  constructor(id: number, idUsuario: number, idConductor: number, toneladas: number,
+  constructor( idUsuario: number, idConductor: number, toneladas: number,
     tipoVehiculo: number, fechaCreacion: string, fechaServicio: string, origen: string, destino: string,
-    terminado: boolean, tipoCasa: string, precios: number) {
+    terminado: boolean, tipoCasa: string, precios: number,id?: number) {
       this.id=id;
       this.idUsuario=idUsuario;
       this.idConductor=idConductor;

@@ -8,7 +8,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 describe('LoginService', () => {
   let service: LoginService;
   let httpMock: HttpTestingController;
-  const apiEndpointLogin = `${environment.endpoint}/usuarios-carrion/login`;
+  const apiEndpointLogin = `${environment.endpoint}/usuarios-carrion/login/json/json1`;
 
   beforeEach(() => {
     const injector = TestBed.configureTestingModule({
