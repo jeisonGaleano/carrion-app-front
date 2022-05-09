@@ -1,15 +1,21 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { ErrorHandler, Injectable } from '@angular/core';
+import { ErrorHandler, Inject, Injectable, Injector } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HTTP_ERRORES_CODIGO } from './http-codigo-error';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class ManejadorError implements ErrorHandler {
-  constructor() {}
+  constructor(@Inject(Injector) private readonly injector: Injector) {}
+
+  private get toastService() {
+    return this.injector.get(ToastrService);
+  }
 
   handleError(error: string | Error): void {
     const mensajeError = this.mensajePorDefecto(error);
     this.imprimirErrorConsola(mensajeError);
+    this.mostrarMensajeModal(mensajeError);
   }
 
   private mensajePorDefecto(error) {
@@ -40,5 +46,9 @@ export class ManejadorError implements ErrorHandler {
       return HTTP_ERRORES_CODIGO.PETICION_FALLIDA;
     }
     return HTTP_ERRORES_CODIGO[httpCode];
+  }
+
+  private mostrarMensajeModal(mensaje){
+    this.toastService.error(mensaje.error.mensaje, 'ERROR');
   }
 }

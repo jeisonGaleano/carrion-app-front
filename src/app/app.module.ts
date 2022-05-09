@@ -14,6 +14,7 @@ import { RegistrouUsuariosComponent } from './feature/formularios/registrousuari
 import { RegistroconductorComponent } from './feature/formularios/registroconductor/components/registroconductor/registroconductor.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
-    ViajesModule
+    ViajesModule,
+    NgbModule
     ],
   providers: [CookieService],
     bootstrap: [AppComponent],

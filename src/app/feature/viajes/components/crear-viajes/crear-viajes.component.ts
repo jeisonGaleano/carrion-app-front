@@ -1,3 +1,4 @@
+import { Viaje } from './../../shared/model/viaje';
 import { Conductor } from './../../../formularios/registrousuario/shared/model/conductor';
 import { ViajesService } from './../../shared/services/viajes.service';
 import { Component, OnInit } from '@angular/core';
@@ -32,7 +33,7 @@ export class CrearViajesComponent implements OnInit {
     });
   }
 
-  private obtenerConductores(){
+   obtenerConductores(){
     this.usuariosServices.obtenerConductores().subscribe(listaDatos=>{
         this.conductorLista=listaDatos;
         console.log(this.conductorLista)
@@ -54,5 +55,23 @@ export class CrearViajesComponent implements OnInit {
       tipoCasa: new FormControl('', []),
       precios: new FormControl('', [Validators.required])
     });
+  }
+
+  private crearEntidad(): Viaje {
+    const id: number = this.viajesForm.value['id'];
+    const idUsuario: number = this.viajesForm.value['idUsuario'];
+    const idConductor: number = this.viajesForm.value['idConductor'];
+    const toneladas: number = this.viajesForm.value['toneladas'];
+    const tipoVehiculo: number = this.viajesForm.value['tipoVehiculo'];
+    const fechaCreacion: string = this.viajesForm.value['fechaCreacion'];
+    const fechaServicio: string = this.viajesForm.value['fechaServicio'];
+    const origen: string = this.viajesForm.value['origen'];
+    const destino: string = this.viajesForm.value['destino'];
+    const terminado: boolean = this.viajesForm.value['terminado'];
+    const tipoCasa: string = this.viajesForm.value['tipoCasa'];
+    const precios: number = this.viajesForm.value['precios'];
+
+    return new Viaje(id,idUsuario,idConductor,toneladas,tipoVehiculo,fechaCreacion,fechaServicio,origen, destino
+      ,terminado,tipoCasa,precios);
   }
 }
