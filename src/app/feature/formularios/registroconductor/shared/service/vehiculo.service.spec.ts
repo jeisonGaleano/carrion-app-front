@@ -28,7 +28,7 @@ describe('VehiculoService', () => {
       17,
       1,
       2022,
-      'Nissan');
+      'Nissan',1);
     service.guardar(listaVehiculo).subscribe(vehiculo => {
       expect(vehiculo).toEqual(true);
     });

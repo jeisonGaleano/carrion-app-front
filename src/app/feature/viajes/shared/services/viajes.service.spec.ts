@@ -25,7 +25,7 @@ describe('ViajesService', () => {
 
   it('deberia guardar viajes', () => {
     let listaLogin = new Viaje(1,1,10,2,'2022-05-09',
-      '2022-05-10','Barranquilla','Soledad',false,'Casa',120000);
+      '2022-05-10','Barranquilla','Soledad',false,'Casa',120000,1);
     service.guardar(listaLogin).subscribe(login => {
       expect(login).toEqual(1);
     });

@@ -1,4 +1,3 @@
-import { Viaje } from './../../shared/model/viaje';
 import { Conductor } from './../../../formularios/registrousuario/shared/model/conductor';
 import { ViajesService } from './../../shared/services/viajes.service';
 import { Component, OnInit } from '@angular/core';
@@ -24,11 +23,13 @@ export class CrearViajesComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerConductores();
     this.construirFormularioViajes();
-    this.crearEntidad();
   }
 
 
   crear() {
+    let datos = this.loginService.obtenerDatos();
+    let jsonDatos = JSON.parse(datos);
+    this.viajesForm.controls.idUsuario.setValue(jsonDatos.id);
     this.viajesServices.guardar(this.viajesForm.value).subscribe((numero)=> {
       console.log(numero)
     });
@@ -42,36 +43,18 @@ export class CrearViajesComponent implements OnInit {
   }
 
   private construirFormularioViajes() {
-    var datos = this.loginService.obtenerDatos();
-    var jsonDatos = JSON.parse(datos);
     this.viajesForm = new FormGroup({
-      idUsuario: new FormControl(jsonDatos.id, [Validators.required]),
-      idConductor: new FormControl('', [Validators.required]),
+      id: new FormControl('', []),
+      idUsuario: new FormControl('', []),
+      idConductor: new FormControl('', []),
       toneladas: new FormControl('', []),
-      tipoVehiculo: new FormControl('', [Validators.required]),
-      fechaServicio: new FormControl('', [Validators.required]),
+      tipoVehiculo: new FormControl('', []),
+      fechaServicio: new FormControl('', []),
       origen: new FormControl('', [Validators.required]),
       destino: new FormControl('', [Validators.required]),
       terminado: new FormControl('', [Validators.required]),
       tipoCasa: new FormControl('', []),
-      precios: new FormControl('', [Validators.required]),
-      id: new FormControl('', [])
+      precios: new FormControl('', [Validators.required])
     });
-  }
-
-  private crearEntidad(): Viaje {
-    const idUsuario: number = this.viajesForm.value['idUsuario'];
-    const idConductor: number = this.viajesForm.value['idConductor'];
-    const toneladas: number = this.viajesForm.value['toneladas'];
-    const tipoVehiculo: number = this.viajesForm.value['tipoVehiculo'];
-    const fechaCreacion: string = this.viajesForm.value['fechaCreacion'];
-    const fechaServicio: string = this.viajesForm.value['fechaServicio'];
-    const origen: string = this.viajesForm.value['origen'];
-    const destino: string = this.viajesForm.value['destino'];
-    const terminado: boolean = this.viajesForm.value['terminado'];
-    const tipoCasa: string = this.viajesForm.value['tipoCasa'];
-    const precios: number = this.viajesForm.value['precios'];
-    return new Viaje(idUsuario,idConductor,toneladas,tipoVehiculo,fechaCreacion,fechaServicio,origen, destino
-      ,terminado,tipoCasa,precios);
   }
 }

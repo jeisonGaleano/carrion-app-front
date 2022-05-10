@@ -1,4 +1,3 @@
-import { EditarViajesComponent } from './components/editar-viajes/editar-viajes.component';
 import { ListarViajesComponent } from './components/listar-viajes/listar-viajes.component';
 import { CrearViajesComponent } from './components/crear-viajes/crear-viajes.component';
 import { ViajesComponent } from './components/viajes/viajes/viajes.component';
@@ -20,10 +19,6 @@ const routes: Routes = [
       {
         path: 'listar',
         component: ListarViajesComponent
-      },
-      {
-        path: 'editar',
-        component: EditarViajesComponent
       }
     ]
   }

@@ -33,7 +33,7 @@ describe('UsuariosService', () => {
       1,
       'Barranquilla',
       'testunit@gmail.com',
-      '2022-05-09');
+      '2022-05-09',1);
     service.guardar(listaUsuario).subscribe(usuarios => {
       expect(usuarios).toEqual(1);
     });

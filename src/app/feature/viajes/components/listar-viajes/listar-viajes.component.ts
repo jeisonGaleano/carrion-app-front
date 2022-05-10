@@ -21,12 +21,11 @@ export class ListarViajesComponent implements OnInit {
   }
 
   private listarViajes(){
-    var datos = this.loginService.obtenerDatos();
-    var jsonDatos = JSON.parse(datos);
+    let datos = this.loginService.obtenerDatos();
+    let jsonDatos = JSON.parse(datos);
     this.viajesServices.consultar(jsonDatos.id).subscribe(datosRespuesta => {
       this.listaViajesConductor=datosRespuesta;
       console.log(datosRespuesta)
     })
   }
-
 }

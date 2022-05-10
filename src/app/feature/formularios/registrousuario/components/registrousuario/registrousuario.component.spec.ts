@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpService } from '@core/services/http.service';
 import { UsuariosService } from '../../shared/service/usuarios.service';
 import { Router } from '@angular/router';
-import { Usuarios } from '../../shared/model/usuarios';
 
 
 describe('RegistrousuarioComponent', () => {
@@ -37,30 +36,19 @@ describe('RegistrousuarioComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('deberia crear el objeto Usuario', () => {
 
-    const usuarios: Usuarios = new Usuarios(
-      112312222,
-      'Json',
-      'Galeano',
-      'JsonGB',
-      'JsonGb1',
-      11,
-      1,
-      'Barranquilla',
-      'Jgaleano@gmail.com',
-      '2022-05-09');
-    component.registroUsuariosForm.controls.identificacion.setValue(112312222);
+  it('deberia guardar el usuario', async () => {
+    component.registroUsuariosForm.controls.identificacion.setValue(1111111);
     component.registroUsuariosForm.controls.nombre.setValue('Json');
-    component.registroUsuariosForm.controls.apellido.setValue('Galeano');
-    component.registroUsuariosForm.controls.usuario.setValue('JsonGB');
-    component.registroUsuariosForm.controls.clave.setValue('JsonGb1');
-    component.registroUsuariosForm.controls.edad.setValue(11);
+    component.registroUsuariosForm.controls.apellido.setValue('JsonGB');
+    component.registroUsuariosForm.controls.usuario.setValue('JsonGALEANO');
+    component.registroUsuariosForm.controls.clave.setValue('JsonGALEANO');
+    component.registroUsuariosForm.controls.edad.setValue(12);
     component.registroUsuariosForm.controls.tipoRol.setValue(1);
-    component.registroUsuariosForm.controls.ciudadResidencia.setValue('Barranquilla');
-    component.registroUsuariosForm.controls.correoElectronico.setValue('Jgaleano@gmail.com');
-    component.registroUsuariosForm.controls.fechaCreacion.setValue('2022-05-09');
-    const result = component['crearEntidad']();
-    expect(usuarios).toEqual(result);
+    component.registroUsuariosForm.controls.ciudadResidencia.setValue('Barranquill');
+    component.registroUsuariosForm.controls.correoElectronico.setValue('Json@gmail.com');
+    component.registroUsuariosForm.controls.fechaCreacion.setValue('2022/05/10');
+    expect(component.registroUsuariosForm.valid).toBeTruthy();
+    component.crear();
   });
 });

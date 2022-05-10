@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../shared/service/usuarios.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Usuarios } from '../../shared/model/usuarios';
 
 @Component({
   selector: 'app-registrousuario',
@@ -16,8 +15,6 @@ export class RegistrouUsuariosComponent implements OnInit {
 
   ngOnInit(): void {
     this.construirFormularioRegistrouUsuarios();
-
-    this.crearEntidad();
   }
 
   crear() {
@@ -41,18 +38,5 @@ export class RegistrouUsuariosComponent implements OnInit {
     });
   }
 
-  private crearEntidad(): Usuarios {
-    const identificacion: number = this.registroUsuariosForm.value['identificacion'];
-    const nombre: string = this.registroUsuariosForm.value['nombre'];
-    const apellido: string = this.registroUsuariosForm.value['apellido'];
-    const usuario: string = this.registroUsuariosForm.value['usuario'];
-    const clave: string = this.registroUsuariosForm.value['clave'];
-    const edad: number = this.registroUsuariosForm.value['edad'];
-    const tipoRol: number = this.registroUsuariosForm.value['tipoRol'];
-    const ciudadResidencia: string = this.registroUsuariosForm.value['ciudadResidencia'];
-    const correoElectronico: string = this.registroUsuariosForm.value['correoElectronico'];
-    const fechaCreacion: string = this.registroUsuariosForm.value['fechaCreacion'];
-    return new Usuarios(identificacion,nombre,apellido,usuario,clave,edad,tipoRol,ciudadResidencia,correoElectronico,fechaCreacion);
-  }
 
 }
