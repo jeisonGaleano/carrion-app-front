@@ -1,5 +1,3 @@
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpService } from '@core/services/http.service';
@@ -8,6 +6,7 @@ import { HomeComponent } from './home.component';
 import { Trm } from './shared/Model/trm';
 import { HomeService } from './shared/Service/home.service';
 import { of } from 'rxjs';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -20,8 +19,7 @@ describe('HomeComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
       imports: [
-        CommonModule,
-        HttpClientModule,
+        HttpClientTestingModule,
         RouterTestingModule,
       ],
       providers: [HomeService, HttpService],
